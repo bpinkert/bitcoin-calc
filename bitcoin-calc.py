@@ -11,9 +11,8 @@ class BitcoinWorker:
 		self.exrate = get_exchangerate() 
 	def get_difficulty():
 		d = requests.get('https://blockchain.info/q/getdifficulty')
-		udiff = d.text.encode('utf-8')
+		udiff = d.text.encode('utf8')
 		dj = json.loads(udiff)
-		difficulty = float(dj)
 		return difficulty
 	def get_hashrate():
 		hashrate = raw_input('Input machine hash rate in GH/s\n')
@@ -36,11 +35,11 @@ class BitcoinWorker:
 		d = get_difficulty()
 		h = get_hashrate()
 		sec_genhash = (d * 2**32) / h 
-		day_hashrate = float(84,000) / float(sec_genhash)
+		day_hashrate = float(84000) / float(sec_genhash)
 		return day_hashrate
 	def get_net_hashrate():
 		h = requests.get('https://blockchain.info/q/hashrate')
-		ht = h.text.encode('utf-8')
+		ht = h.text.encode('utf8')
 		hj = json.loads(ht)
 		net_hashrate = float(hj)
 		return net_hashrate
@@ -50,7 +49,7 @@ class BitcoinWorker:
 		return percent
 	def get_exchangerate():
 		rate = requests.get('https://blockchain.info/ticker')
-		urate = rate.text.encode('utf-8')
+		urate = rate.text
 		j = json.loads(urate)
 		us = j['USD']
 		usrate = us['last']
