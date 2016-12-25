@@ -44,27 +44,20 @@ class BitcoinWorker:
 		us = j['USD']
 		usrate = us['last']
 		return usrate
-
-	#class methods here
-	@classmethod
 	def ask_poolcosts():
 		poolcosts = raw_input('Input percentage paid to pool maintainer in decimal notation ex .20 as 20%\n')
-		percent = float(poolcosts)
+		percent = float(poolcosts) * 100
+		ipercent = int(poolcosts)
 		return percent
-	@classmethod
 	def ask_hashrate():
 		hashrate = raw_input('Input machine hash rate in GH/s\n')
 		flhashrate = float(hashrate)
 		return hashrate
-	@classmethod
 	def ask_wattage():
 		wattage = raw_input('Input machine power usage in Watts\n')
 		flwattage = float(wattage)
 		return flwattage
-	@classmethod
 	def ask_wattcost():
 		wattcosts = raw_input('Input electricty costs per kW in cents as float ex. 7.28\n')
 		flwattcosts = float(wattcosts)
 		return flwattcosts
-
-	
